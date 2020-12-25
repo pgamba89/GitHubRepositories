@@ -5,6 +5,18 @@
 
     <fragment
         android:id="@+id/gitHubRepositoriesList"
-        android:name="com.example.githubrepositories.ui.GitHubRepositoriesList"
-        android:label="GitHubRepositoriesList" />
+        android:name="com.example.githubrepositories.ui.gitHubList.GitHubRepositoriesList"
+        android:label="GitHubRepositoriesList" >
+        <action
+            android:id="@+id/action_gitHubRepositoriesList_to_gitHubDetailFragment"
+            app:destination="@id/gitHubDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gitHubDetailFragment"
+        android:name="com.example.githubrepositories.ui.gitHubDetail.GitHubDetailFragment"
+        android:label="GitHubDetailFragment" >
+        <argument
+            android:name="repoSelected"
+            app:argType="com.example.githubrepositories.model.Repository" />
+    </fragment>
 </navigation>

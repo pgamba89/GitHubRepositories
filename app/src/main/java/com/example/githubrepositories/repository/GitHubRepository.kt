@@ -1,31 +1,41 @@
 package com.example.githubrepositories.repository
 
 import androidx.lifecycle.LiveData
-import androidx.paging.Pager
-import androidx.paging.PagingConfig
-import androidx.paging.PagingData
-import androidx.paging.liveData
+import androidx.paging.*
 import com.example.githubrepositories.api.ApiService
-import com.example.githubrepositories.data.GithubPagingSource
+import com.example.githubrepositories.data.GithubRemoteMediator
+import com.example.githubrepositories.db.RepoDatabase
 import com.example.githubrepositories.model.Repository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class GitHubRepository @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val database: RepoDatabase
 ) {
     companion object {
         private const val NETWORK_PAGE_SIZE = 20
     }
 
+    @OptIn(ExperimentalPagingApi::class)
     fun getRepositories(queryString: String): LiveData<PagingData<Repository>> {
+
+        val dbQuery = "%${queryString.replace(' ', '%')}%"
+        val pagingSourceFactory = { database.reposDao().reposByName(dbQuery) }
+
         return Pager(
             config = PagingConfig(
                 pageSize = NETWORK_PAGE_SIZE,
                 enablePlaceholders = false
             ),
-            pagingSourceFactory = { GithubPagingSource(apiService, queryString) }
+            remoteMediator = GithubRemoteMediator(
+                queryString,
+                apiService,
+                database
+            ),
+            pagingSourceFactory = pagingSourceFactory
         ).liveData
     }
 }

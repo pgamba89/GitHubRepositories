@@ -1,4 +1,4 @@
-package com.example.githubrepositories.ui
+package com.example.githubrepositories.ui.gitHubList
 
 import android.os.Bundle
 import android.view.*
@@ -6,6 +6,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubrepositories.R
 import com.example.githubrepositories.databinding.FragmentGitHubListBinding
@@ -49,7 +50,12 @@ class GitHubRepositoriesList : Fragment(), SearchView.OnQueryTextListener {
         binding.lifecycleOwner = this
 
         adapter = GitHubListAdapter(ListItemListener {
-
+            view?.findNavController()
+                ?.navigate(
+                    GitHubRepositoriesListDirections.actionGitHubRepositoriesListToGitHubDetailFragment(
+                        it
+                    )
+                )
         })
 
         binding.recyclerviewlist.layoutManager =
@@ -59,24 +65,23 @@ class GitHubRepositoriesList : Fragment(), SearchView.OnQueryTextListener {
         val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
         viewModel.getRepositoriesList(query)
 
+        subscribeObservers()
+        return binding.root
+    }
+
+    private fun subscribeObservers() {
         viewModel.currentRepositories?.observe(viewLifecycleOwner, {
             it?.let {
                 adapter.submitData(viewLifecycleOwner.lifecycle, it)
             }
         })
-
-        return binding.root
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
         if (query != null) {
-            binding.recyclerviewlist.scrollToPosition(0)
             viewModel.getRepositoriesList(query)
-            viewModel.currentRepositories?.observe(viewLifecycleOwner, {
-                it?.let {
-                    adapter.submitData(viewLifecycleOwner.lifecycle, it)
-                }
-            })
+            binding.recyclerviewlist.scrollToPosition(0)
+            subscribeObservers()
             searchView?.clearFocus()
         }
         return false

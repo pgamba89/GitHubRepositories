@@ -1,4 +1,4 @@
-package com.example.githubrepositories.ui
+package com.example.githubrepositories.ui.gitHubList
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
