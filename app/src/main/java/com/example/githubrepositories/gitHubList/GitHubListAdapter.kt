@@ -1,4 +1,4 @@
-package com.example.githubrepositories.ui.gitHubList
+package com.example.githubrepositories.gitHubList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

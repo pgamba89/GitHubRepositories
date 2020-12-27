@@ -6,11 +6,12 @@ import com.example.githubrepositories.api.ApiService
 import com.example.githubrepositories.data.GithubRemoteMediator
 import com.example.githubrepositories.db.RepoDatabase
 import com.example.githubrepositories.model.Repository
-import kotlinx.coroutines.flow.Flow
+import com.example.githubrepositories.utils.OpenForTesting
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
+@OpenForTesting
 class GitHubRepository @Inject constructor(
     private val apiService: ApiService,
     private val database: RepoDatabase

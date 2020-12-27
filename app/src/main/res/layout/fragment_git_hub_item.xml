@@ -10,7 +10,7 @@
 
         <variable
             name="clickListener"
-            type="com.example.githubrepositories.ui.gitHubList.ListItemListener" />
+            type="com.example.githubrepositories.gitHubList.ListItemListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

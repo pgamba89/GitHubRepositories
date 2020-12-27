@@ -1,4 +1,4 @@
-package com.example.githubrepositories.ui.gitHubList
+package com.example.githubrepositories.gitHubList
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -18,9 +18,7 @@ class GitHubModelView @ViewModelInject constructor(private val repository: GitHu
 
     fun getRepositoriesList(queryString: String) {
         val lastResult = currentRepositories
-        if (queryString == currentQueryValue && lastResult != null) {
-
-        } else {
+        if (!(queryString == currentQueryValue && lastResult != null)) {
             currentQueryValue = queryString
             val newResult: LiveData<PagingData<Repository>> =
                 repository.getRepositories(queryString).cachedIn(viewModelScope)

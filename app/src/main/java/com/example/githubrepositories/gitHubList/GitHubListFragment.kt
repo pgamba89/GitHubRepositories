@@ -1,4 +1,4 @@
-package com.example.githubrepositories.ui.gitHubList
+package com.example.githubrepositories.gitHubList
 
 import android.os.Bundle
 import android.view.*
@@ -52,9 +52,7 @@ class GitHubRepositoriesList : Fragment(), SearchView.OnQueryTextListener {
         adapter = GitHubListAdapter(ListItemListener {
             view?.findNavController()
                 ?.navigate(
-                    GitHubRepositoriesListDirections.actionGitHubRepositoriesListToGitHubDetailFragment(
-                        it
-                    )
+                    GitHubRepositoriesListDirections.actionGitHubRepositoriesListToGitHubDetailFragment(it)
                 )
         })
 
