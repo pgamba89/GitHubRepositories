@@ -9,7 +9,7 @@ import com.example.githubrepositories.repository.GitHubRepository
 import com.example.githubrepositories.utils.Constants.Companion.DEFAULT_QUERY
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -19,7 +19,6 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.MockitoAnnotations
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -47,9 +46,11 @@ class GitHubModelViewTest {
     lateinit var modelView: GitHubModelView
 
     private val repos = listOf(
-        Repository(1, "Hello", "", "", Owner("1", 1
-            , "", "", "", "", "", ""), 1
-            , "")
+        Repository(
+            1, "Hello", "", "Test", Owner(
+                "1", 1, "", "", "", "", "", ""
+            ), 1, ""
+        )
     )
 
     @Before
