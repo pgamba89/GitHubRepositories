@@ -1,9 +1,8 @@
-package com.example.githubrepositories.repository
+package com.example.githubrepositories.data
 
 import androidx.lifecycle.LiveData
 import androidx.paging.*
 import com.example.githubrepositories.api.ApiService
-import com.example.githubrepositories.data.GithubRemoteMediator
 import com.example.githubrepositories.db.RepoDatabase
 import com.example.githubrepositories.model.Repository
 import com.example.githubrepositories.utils.OpenForTesting

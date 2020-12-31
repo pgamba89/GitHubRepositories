@@ -41,5 +41,5 @@ ext {
     dataBindingCompilerVersion = gradleVersion
     hilt_version = '2.28-alpha'
     hilt_jetpack = "1.0.0-alpha02"
-    pagingVersion = '3.0.0-alpha09'
+    pagingVersion = '3.0.0-alpha11'
 }

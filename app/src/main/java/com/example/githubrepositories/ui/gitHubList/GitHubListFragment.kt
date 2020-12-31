@@ -1,4 +1,4 @@
-package com.example.githubrepositories.gitHubList
+package com.example.githubrepositories.ui.gitHubList
 
 import android.os.Bundle
 import android.view.*

@@ -5,7 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.PagingData
 import com.example.githubrepositories.model.Owner
 import com.example.githubrepositories.model.Repository
-import com.example.githubrepositories.repository.GitHubRepository
+import com.example.githubrepositories.data.GitHubRepository
+import com.example.githubrepositories.ui.gitHubList.GitHubModelView
 import com.example.githubrepositories.utils.Constants.Companion.DEFAULT_QUERY
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.TestCoroutineScope

@@ -1,4 +1,4 @@
-package com.example.githubrepositories.gitHubList
+package com.example.githubrepositories.ui.gitHubList
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.githubrepositories.model.Repository
-import com.example.githubrepositories.repository.GitHubRepository
+import com.example.githubrepositories.data.GitHubRepository
 
 class GitHubModelView @ViewModelInject constructor(private val repository: GitHubRepository) :
     ViewModel() {
